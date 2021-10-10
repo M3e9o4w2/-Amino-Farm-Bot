@@ -50,7 +50,7 @@ def start():
         for uid in uids:
             Thread(target = farm, args = (None, uid,)).start()
         
-            for i in "\nStart farm on {}.".format(link):
+            for i in "\nStart farm on {}.".format(uid):
                 print(i, end = "", flush = True)
                 time.sleep(0.05)
     if choice == 3:
@@ -67,6 +67,7 @@ def start():
         link = input()
         
         if choice == 1:
+            open("sids.txt", "w")
             try:
                 emails = open("emails.txt", "r").read().split()
             
@@ -122,7 +123,6 @@ def with_login(email = None, password = None, sid = None, link = None):
         
     
     if email:
-        open("sids.txt", "w")
         data = json.dumps({
            "email": email,
            "v": 2,
